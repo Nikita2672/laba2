@@ -1,0 +1,9 @@
+@import "header.css";
+@import "table.css";
+@import "graph.css";
+@import "form.css";
+
+.error {
+    border-color: red;
+    border-width: 2px;
+}
