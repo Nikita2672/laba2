@@ -7,6 +7,7 @@ function receiveSubmit() {
             fromG: false
         }, function (data) {
             if (data !== "Data is incorrect") {
+                drawDot(FIELD_X.val(), FIELD_Y.val(), FIELD_R.val());
                 console.log(data);
                 updateTable(data);
             } else {
@@ -20,8 +21,8 @@ function receiveSubmit() {
 
 function receiveFromGraph(x, y) {
     if (validateR()) {
-        x = x / 150 * (FIELD_R.val() * 1.5);
-        y = y / 150 * (FIELD_R.val() * 1.5);
+        x = x / 175 * (FIELD_R.val() * 1.4583);
+        y = y / 175 * (FIELD_R.val() * 1.4583);
         console.log("x: " + x + " y: " + y);
         $.get('ControllerServlet', {
             x: x,
@@ -30,6 +31,7 @@ function receiveFromGraph(x, y) {
             fromG: true
         }, function (data) {
             if (data !== "Data is incorrect") {
+                drawDot(x, y, FIELD_R.val());
                 console.log(data);
                 updateTable(data);
             } else {

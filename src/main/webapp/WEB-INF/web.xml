@@ -11,6 +11,15 @@
         <servlet-name>ControllerServlet</servlet-name>
         <url-pattern>/ControllerServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>DataServlet</servlet-name>
+        <servlet-class>controller.DataServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DataServlet</servlet-name>
+        <url-pattern>/DataServlet</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>AreaCheckServlet</servlet-name>

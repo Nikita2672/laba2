@@ -1,17 +1,17 @@
 package controller;
 
 import model.TableBean;
-import util.TableHandler;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 
 public class AreaCheckServlet extends HttpServlet {
-    private final TableBean tableBean = new TableBean();
+
+    public static final TableBean tableBean = new TableBean();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -27,7 +27,7 @@ public class AreaCheckServlet extends HttpServlet {
                 boolean result = checkHit(paramX, paramY, paramR);
                 long endTime = System.nanoTime();
                 String workTime = Long.toString((endTime - startTime) / 1000);
-                sendData(response, paramX, paramY, paramR, new Date().toString(), workTime, result);
+                addData(response, request, paramX, paramY, paramR, new Date().toString(), workTime, result);
             } else {
                 int paramX = Integer.parseInt(x);
                 if (paramX < -3 || paramX > 5 || paramY < -5 || paramY > 5 || paramR < 2 || paramR > 5) {
@@ -36,23 +36,24 @@ public class AreaCheckServlet extends HttpServlet {
                     boolean result = checkHit(paramX, paramY, paramR);
                     long endTime = System.nanoTime();
                     String workTime = Long.toString((endTime - startTime) / 1000);
-                    sendData(response, paramX, paramY, paramR, new Date().toString(), workTime, result);
+                    addData(response, request, paramX, paramY, paramR, new Date().toString(), workTime, result);
                 }
             }
         } catch (IllegalArgumentException e) {
             response.getWriter().write("Data is incorrect");
+        } catch (IOException | ServletException e) {
+            response.getWriter().write("There is something wrong");
         }
     }
 
-    private void sendData(HttpServletResponse response, double x, double y, double r, String time, String workTime, boolean isHit) throws IOException {
-        PrintWriter pw = response.getWriter();
+    private void addData(HttpServletResponse response, HttpServletRequest request, double x, double y, double r, String time, String workTime, boolean isHit) throws IOException, ServletException {
         tableBean.addAttempt(x, y, r, time, workTime, isHit);
-        pw.write(TableHandler.makeDataForTable(tableBean));
+        getServletContext().getRequestDispatcher("/DataServlet").forward(request, response);
     }
 
     public boolean checkHit(double x, double y, double r) {
         if (x >= 0 && y >= 0) {
-            return (x * x + y * y) < (r * r);
+            return (x * x + y * y) <= (r * r);
         } else if (x < 0 && y > 0) {
             return false;
         } else if (x <= 0 && y <= 0) {
