@@ -2,16 +2,16 @@ package controller;
 
 import util.TableHandler;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class DataServlet extends HttpServlet {
+public class ServletData extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter printWriter = response.getWriter();
-        printWriter.write(TableHandler.makeDataForTable(AreaCheckServlet.tableBean));
+        printWriter.write(TableHandler.makeDataForTable(ServletAreaCheck.tableBean));
     }
 }

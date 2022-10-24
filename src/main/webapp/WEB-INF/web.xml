@@ -4,30 +4,30 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <servlet-name>ControllerServlet</servlet-name>
-        <servlet-class>controller.ControllerServlet</servlet-class>
+        <servlet-name>ServletController</servlet-name>
+        <servlet-class>controller.ServletController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ControllerServlet</servlet-name>
-        <url-pattern>/ControllerServlet</url-pattern>
+        <servlet-name>ServletController</servlet-name>
+        <url-pattern>/ServletController</url-pattern>
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>DataServlet</servlet-name>
-        <servlet-class>controller.DataServlet</servlet-class>
+        <servlet-name>ServletData</servlet-name>
+        <servlet-class>controller.ServletData</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>DataServlet</servlet-name>
-        <url-pattern>/DataServlet</url-pattern>
+        <servlet-name>ServletData</servlet-name>
+        <url-pattern>/ServletData</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>AreaCheckServlet</servlet-name>
-        <servlet-class>controller.AreaCheckServlet</servlet-class>
+        <servlet-name>ServletAreaCheck</servlet-name>
+        <servlet-class>controller.ServletAreaCheck</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>AreaCheckServlet</servlet-name>
-        <url-pattern>/AreaCheckServlet</url-pattern>
+        <servlet-name>ServletAreaCheck</servlet-name>
+        <url-pattern>/ServletAreaCheck</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -38,14 +38,4 @@
         <servlet-name>FirstJsp</servlet-name>
         <url-pattern>/hello-world-jsp</url-pattern>
     </servlet-mapping>
-
-    <servlet>
-        <servlet-name>SecondJsp</servlet-name>
-        <jsp-file>/result.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>SecondJsp</servlet-name>
-        <url-pattern>/result-jsp</url-pattern>
-    </servlet-mapping>
-
 </web-app>

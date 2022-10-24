@@ -2,14 +2,16 @@ package controller;
 
 import model.TableBean;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import util.Constants;
+
 import java.io.IOException;
 import java.util.Date;
 
-public class AreaCheckServlet extends HttpServlet {
+public class ServletAreaCheck extends HttpServlet {
 
     public static final TableBean tableBean = new TableBean();
 
@@ -48,7 +50,7 @@ public class AreaCheckServlet extends HttpServlet {
 
     private void addData(HttpServletResponse response, HttpServletRequest request, double x, double y, double r, String time, String workTime, boolean isHit) throws IOException, ServletException {
         tableBean.addAttempt(x, y, r, time, workTime, isHit);
-        getServletContext().getRequestDispatcher("/DataServlet").forward(request, response);
+        getServletContext().getRequestDispatcher(Constants.SERVLET_DATA).forward(request, response);
     }
 
     public boolean checkHit(double x, double y, double r) {
