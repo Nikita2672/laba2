@@ -2,7 +2,7 @@ var dataset = [];
 let object;
 $(document).ready(function () {
     object = $('#table_id').DataTable();
-    $.get('ControllerServlet', {
+    $.get('ServletController', {
         loadData: "true"
     }, function (data) {
         updateTable(data);
