@@ -11,7 +11,3 @@ I
 src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-P
- src/main/java/model/Attempt.java,0\c\0cfad6ca83cb0e13eb4312af453125039736048e
-R
-"src/main/java/model/TableBean.java,0\9\09c537d4641745fc24ed7dfb1b584d0d6d6c7e1c

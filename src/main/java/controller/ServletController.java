@@ -18,7 +18,7 @@ public class ServletController extends HttpServlet {
         String loadData = request.getParameter("loadData");
         if ((x != null && y != null && r != null)) {
             getServletContext().getRequestDispatcher(Constants.SERVLET_AREA).forward(request, response);
-        }else if (loadData.equals("true")){
+        } else if (loadData.equals("true")) {
             getServletContext().getRequestDispatcher(Constants.SERVLET_DATA).forward(request, response);
         } else {
             response.setStatus(HttpServletResponse.SC_FOUND);//302
