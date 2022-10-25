@@ -1,6 +1,7 @@
 package controller;
 
 import model.TableBean;
+import util.Constants;
 import util.TableHandler;
 
 import jakarta.servlet.http.HttpServlet;
@@ -17,11 +18,11 @@ public class ServletData extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter printWriter = response.getWriter();
-        String loadData = request.getParameter("loadData") == null ? "false" : request.getParameter("loadData");
+        String loadData = request.getParameter(Constants.IS_LOAD_DATA) == null ? "false" : request.getParameter("loadData");
         if (!loadData.equals("true")) {
-            tableBean.addAttempt(Double.parseDouble(request.getParameter("x")),
-                    Double.parseDouble(request.getParameter("y")),
-                    Double.parseDouble(request.getParameter("r")),
+            tableBean.addAttempt(Double.parseDouble(request.getParameter(Constants.X)),
+                    Double.parseDouble(request.getParameter(Constants.Y)),
+                    Double.parseDouble(request.getParameter(Constants.R)),
                     new Date().toString(),
                     "" + ServletAreaCheck.getWorkTime(),
                     ServletAreaCheck.isHit());

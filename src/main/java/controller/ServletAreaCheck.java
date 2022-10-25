@@ -15,20 +15,28 @@ public class ServletAreaCheck extends HttpServlet {
     private static boolean isHit;
     private static long workTime;
 
+    public static boolean isHit() {
+        return isHit;
+    }
+
+    public static long getWorkTime() {
+        return workTime;
+    }
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         long startTime = System.nanoTime();
-        String x = request.getParameter("x");
-        String y = request.getParameter("y");
-        String r = request.getParameter("r");
-        String fromG = request.getParameter("fromG");
+        String x = request.getParameter(Constants.X);
+        String y = request.getParameter(Constants.Y);
+        String r = request.getParameter(Constants.R);
+        String fromG = request.getParameter(Constants.IS_FROM_GRAPH);
         if (Validator.validate(r, x, y, fromG)) {
             isHit = checkHit(Double.parseDouble(x), Double.parseDouble(y), Double.parseDouble(r));
             workTime = (System.nanoTime() - startTime) / 1000;
             getServletContext().getRequestDispatcher(Constants.SERVLET_DATA).forward(request, response);
         } else {
             PrintWriter pw = response.getWriter();
-            pw.write("Data is invalid");
+            pw.write(Constants.INVALID_DATA);
         }
     }
 
@@ -42,13 +50,5 @@ public class ServletAreaCheck extends HttpServlet {
         } else {
             return x < r / 2 && y > -r;
         }
-    }
-
-    public static boolean isHit() {
-        return isHit;
-    }
-
-    public static long getWorkTime() {
-        return workTime;
     }
 }

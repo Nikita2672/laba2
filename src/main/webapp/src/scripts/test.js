@@ -21,7 +21,7 @@ function receiveSubmit() {
             }
         });
     } else {
-        console.log("data is invalid");
+        alert("data is invalid");
     }
 }
 

@@ -19,5 +19,3 @@ d
 4src/main/webapp/src/scripts/processFieldSelection.js,e\3\e3c1134d38e374fb8e18c69f37c2fc2210fbb8e3
 X
 (src/main/webapp/src/scripts/constants.js,4\f\4f1461fc20a701647fd93c9df2bb995d1ed020ce
-P
- src/main/java/model/Attempt.java,0\c\0cfad6ca83cb0e13eb4312af453125039736048e
