@@ -12,6 +12,9 @@ import java.io.PrintWriter;
 
 public class ServletAreaCheck extends HttpServlet {
 
+    private static boolean isHit;
+    private static long workTime;
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         long startTime = System.nanoTime();
@@ -20,10 +23,8 @@ public class ServletAreaCheck extends HttpServlet {
         String r = request.getParameter("r");
         String fromG = request.getParameter("fromG");
         if (Validator.validate(r, x, y, fromG)) {
-            boolean result = checkHit(Double.parseDouble(x), Double.parseDouble(y), Double.parseDouble(r));
-            long workTime = (System.nanoTime() - startTime) / 1000;
-            request.setAttribute("result", Boolean.toString(result));
-            request.setAttribute("workTime", workTime);
+            isHit = checkHit(Double.parseDouble(x), Double.parseDouble(y), Double.parseDouble(r));
+            workTime = (System.nanoTime() - startTime) / 1000;
             getServletContext().getRequestDispatcher(Constants.SERVLET_DATA).forward(request, response);
         } else {
             PrintWriter pw = response.getWriter();
@@ -41,5 +42,13 @@ public class ServletAreaCheck extends HttpServlet {
         } else {
             return x < r / 2 && y > -r;
         }
+    }
+
+    public static boolean isHit() {
+        return isHit;
+    }
+
+    public static long getWorkTime() {
+        return workTime;
     }
 }

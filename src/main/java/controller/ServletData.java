@@ -17,13 +17,14 @@ public class ServletData extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter printWriter = response.getWriter();
-        if (!request.getParameter("loadData").equals("true")) {
+        String loadData = request.getParameter("loadData") == null ? "false" : request.getParameter("loadData");
+        if (!loadData.equals("true")) {
             tableBean.addAttempt(Double.parseDouble(request.getParameter("x")),
                     Double.parseDouble(request.getParameter("y")),
                     Double.parseDouble(request.getParameter("r")),
                     new Date().toString(),
-                    request.getParameter("wortTime"),
-                    Boolean.parseBoolean(request.getParameter("result")));
+                    "" + ServletAreaCheck.getWorkTime(),
+                    ServletAreaCheck.isHit());
         }
         printWriter.write(TableHandler.makeDataForTable(tableBean));
     }

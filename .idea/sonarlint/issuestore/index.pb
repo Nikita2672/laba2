@@ -11,3 +11,13 @@ I
 src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+S
+#src/main/webapp/src/style/table.css,5\a\5a5f4c90a7197d6d83f43707e11a32b3288bd0b5
+T
+$src/main/webapp/src/scripts/reset.js,f\f\ff4fafb5c08d704ac5468ba24753edc63c6c5ec2
+d
+4src/main/webapp/src/scripts/processFieldSelection.js,e\3\e3c1134d38e374fb8e18c69f37c2fc2210fbb8e3
+X
+(src/main/webapp/src/scripts/constants.js,4\f\4f1461fc20a701647fd93c9df2bb995d1ed020ce
+P
+ src/main/java/model/Attempt.java,0\c\0cfad6ca83cb0e13eb4312af453125039736048e
