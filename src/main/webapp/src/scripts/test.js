@@ -1,13 +1,19 @@
 function receiveSubmit() {
+    let xParam;
     if (validate()) {
-        $.get('ControllerServlet', {
-            x: FIELD_X.val(),
+        if (FIELD_X.val() === "") {
+            xParam = 0;
+        } else {
+            xParam = FIELD_X.val();
+        }
+        $.get('ServletController', {
+            x: xParam,
             y: FIELD_Y.val(),
             r: FIELD_R.val(),
             fromG: false
         }, function (data) {
             if (data !== "Data is incorrect") {
-                drawDot(FIELD_X.val(), FIELD_Y.val(), FIELD_R.val());
+                drawDot(xParam, FIELD_Y.val(), FIELD_R.val());
                 console.log(data);
                 updateTable(data);
             } else {
@@ -24,7 +30,7 @@ function receiveFromGraph(x, y) {
         x = x / 175 * (FIELD_R.val() * 1.4583);
         y = y / 175 * (FIELD_R.val() * 1.4583);
         console.log("x: " + x + " y: " + y);
-        $.get('ControllerServlet', {
+        $.get('ServletController', {
             x: x,
             y: y,
             r: FIELD_R.val(),
