@@ -6,11 +6,11 @@ public class Attempt {
     private final Double x;
     private final Double y;
     private final Double r;
-    private final Boolean isHit;
+    private final String isHit;
     private final String workTime;
     private final String time;
 
-    public Attempt(Double x, Double y, Double r, String time, String workTime, boolean isHit) {
+    public Attempt(Double x, Double y, Double r, String time, String workTime, String isHit) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -31,7 +31,7 @@ public class Attempt {
         return r;
     }
 
-    public Boolean getIsHit() {
+    public String getIsHit() {
         return isHit;
     }
 

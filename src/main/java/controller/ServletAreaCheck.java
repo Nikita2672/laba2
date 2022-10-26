@@ -1,5 +1,6 @@
 package controller;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,17 +13,6 @@ import java.io.PrintWriter;
 
 public class ServletAreaCheck extends HttpServlet {
 
-    private static boolean isHit;
-    private static long workTime;
-
-    public static boolean isHit() {
-        return isHit;
-    }
-
-    public static long getWorkTime() {
-        return workTime;
-    }
-
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         long startTime = System.nanoTime();
@@ -31,8 +21,11 @@ public class ServletAreaCheck extends HttpServlet {
         String r = request.getParameter(Constants.R);
         String fromG = request.getParameter(Constants.IS_FROM_GRAPH);
         if (Validator.validate(r, x, y, fromG)) {
-            isHit = checkHit(Double.parseDouble(x), Double.parseDouble(y), Double.parseDouble(r));
-            workTime = (System.nanoTime() - startTime) / 1000;
+            ServletContext servletContext = request.getServletContext();
+            boolean isHit = checkHit(Double.parseDouble(x), Double.parseDouble(y), Double.parseDouble(r));
+            long workTime = (System.nanoTime() - startTime) / 1000;
+            servletContext.setAttribute("workTime", workTime);
+            servletContext.setAttribute("result", isHit);
             getServletContext().getRequestDispatcher(Constants.SERVLET_DATA).forward(request, response);
         } else {
             PrintWriter pw = response.getWriter();
