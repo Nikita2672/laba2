@@ -1,18 +1,30 @@
 package util;
 
+import java.math.BigDecimal;
+
 public class Validator {
     public static boolean validate(String r, String x, String y, String fromG) {
         try {
-            double paramY = Double.parseDouble(y);
-            double paramR = Double.parseDouble(r);
+            BigDecimal paramY = new BigDecimal(y);
+            BigDecimal paramR = new BigDecimal(r);
             if (fromG.equals("true")) {
                 Double.parseDouble(x);
                 return true;
             } else {
                 int paramX = Integer.parseInt(x);
-                return paramX >= -3 && paramX <= 5 && (paramY >= -5) && (paramY <= 5) && (paramR >= 2) && (paramR <= 5);
+                if (paramX < -3) {
+                    return false;
+                } else if (paramX > 5) {
+                    return false;
+                } else if (paramY.compareTo(new BigDecimal(5)) > 0) {
+                    return false;
+                } else if (paramY.compareTo(new BigDecimal(-5)) < 0) {
+                    return false;
+                } else if (paramR.compareTo(new BigDecimal(2)) < 0) {
+                    return false;
+                } else return paramR.compareTo(new BigDecimal(5)) <= 0;
             }
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | NullPointerException e) {
             return false;
         }
     }

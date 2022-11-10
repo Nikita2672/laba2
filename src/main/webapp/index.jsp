@@ -16,8 +16,10 @@
     <link rel="stylesheet" href="src/style/main.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
     <script type="text/javascript" charset="utf8"
             src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Main</title>
 </head>
 <div id="flex-container">
@@ -85,6 +87,11 @@
                                                           placeholder="Please enter R">
                     <label id="r-warning">R in (2; 5)</label>
                 </p>
+                <p class="accuracy">
+                    <label for="accuracy_value">Accuracy:</label><input id="accuracy_value" type="text" class="input js-input js-input-accuracy"
+                name="accuracy" oninput="validateAccuracy()" placeholder="Please enter Accuracy">
+                    <label id="accuracy_warning" class="limitations">default 18</label>
+                </p>
                 <p class="buttons">
                     <input class="button_animation" id="reset" type="reset" value="reset" onclick="cleanInput()">
                     <input class="button_animation" id="submit" type="submit" value="send">
@@ -113,7 +120,7 @@
     </div>
     </body>
 </div>
-<script src="src/scripts/test.js"></script>
+<script src="src/scripts/send.js"></script>
 <script src="src/scripts/constants.js"></script>
 <script src="src/scripts/reset.js"></script>
 <script src="src/scripts/validator.js"></script>

@@ -16,7 +16,7 @@ public class TableHandler {
                 stringBuilder.append("*").append(tableBean.getAttempts().get(i).getY());
                 stringBuilder.append("*").append(tableBean.getAttempts().get(i).getR());
                 stringBuilder.append("*").append(tableBean.getAttempts().get(i).getTime());
-                stringBuilder.append("*").append(tableBean.getAttempts().get(i).getWorkTime()).append(" ms");
+                stringBuilder.append("*").append(tableBean.getAttempts().get(i).getWorkTime()).append(" ns");
                 stringBuilder.append("*").append(tableBean.getAttempts().get(i).getIsHit());
             }
         } else {

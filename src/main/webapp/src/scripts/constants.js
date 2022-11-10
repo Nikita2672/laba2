@@ -3,3 +3,4 @@ const FIELD_X = $('#x_value');
 const FIELD_R = $('#r_value');
 const Y_WARNING = $('#y-warning');
 const R_WARNING = $('#r-warning');
+const FIELD_ACCURACY = $('#accuracy_value');

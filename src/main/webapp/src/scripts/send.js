@@ -10,18 +10,21 @@ function receiveSubmit() {
             x: xParam,
             y: FIELD_Y.val(),
             r: FIELD_R.val(),
-            fromG: false
+            fromG: false,
+            accuracy: FIELD_ACCURACY.val()
         }, function (data) {
             if (data !== "Data is incorrect") {
                 drawDot(xParam, FIELD_Y.val(), FIELD_R.val());
                 console.log(data);
                 updateTable(data);
             } else {
-                alert(data);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: data,
+                })
             }
         });
-    } else {
-        alert("data is invalid");
     }
 }
 
@@ -41,11 +44,19 @@ function receiveFromGraph(x, y) {
                 console.log(data);
                 updateTable(data);
             } else {
-                alert(data);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: data,
+                })
             }
         });
     } else {
-        alert("R is invalid");
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Check R',
+        })
     }
 }
 
