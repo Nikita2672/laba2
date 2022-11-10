@@ -2,12 +2,17 @@ var dataset = [];
 let object;
 $(document).ready(function () {
     object = $('#table_id').DataTable();
-    $.get('ControllerServlet', {
+    $.get('ServletController', {
         loadData: "true"
     }, function (data) {
-        updateTable(data);
-        for (let i = 0; i < dataset.length; i++) {
-            drawDot(dataset[i][0], dataset[i][1], dataset[i][2]);
+        if (data !== "There is no data" && data !== "Data is invalid") {
+            updateTable(data);
+            for (let i = 0; i < dataset.length; i++) {
+                drawDot(dataset[i][0], dataset[i][1], dataset[i][2]);
+            }
+        }
+        if (data === "Data is invalid") {
+            alert(data);
         }
     });
 })

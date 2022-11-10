@@ -4,6 +4,16 @@ function validate() {
     return validateY() && validateR();
 }
 
+function validateAccuracy() {
+    if (!numberPattern.test(FIELD_ACCURACY.val())) {
+        //here you should input action which you want to do when field is wrong
+        return false;
+    } else {
+        const accuracy = parseInt(FIELD_ACCURACY.val());
+        return !(Number.isNaN(accuracy) || accuracy <= 0 || accuracy >= 32);
+    }
+}
+
 function validateY() {
     if (checkY()) {
         FIELD_Y.removeClass('error');
@@ -35,8 +45,8 @@ function checkY() {
         Y_WARNING.html("Y in (-5; 5)");
         return false;
     }
-    const y = parseFloat(FIELD_Y.val());
-    const res = Number.isNaN(y) || y <= -5 || y >= 5
+    const y = FIELD_Y.val();
+    const res = Number.isNaN(y) || y < -5 || y > 5
     if (res) {
         Y_WARNING.html("Y in (-5; 5)");
     }
@@ -48,10 +58,12 @@ function checkR() {
         R_WARNING.html("R in (2; 5)");
         return false;
     }
-    const r = parseFloat(FIELD_R.val());
-    const res = Number.isNaN(r) || r <= 2 || r >= 5
+    const r = FIELD_R.val();
+
+    const res = Number.isNaN(r) || r < 2 || r > 5
     if (res) {
         R_WARNING.html("R in (2; 5)");
+        console.log(r);
     }
-    return !(Number.isNaN(r) || r <= 2 || r >= 5);
+    return !(Number.isNaN(r) || r < 2 || r > 5);
 }

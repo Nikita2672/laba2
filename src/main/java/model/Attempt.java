@@ -1,16 +1,17 @@
 package model;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Attempt {
     private final Double x;
-    private final Double y;
-    private final Double r;
-    private final Boolean isHit;
+    private final BigDecimal y;
+    private final BigDecimal r;
+    private final String isHit;
     private final String workTime;
     private final String time;
 
-    public Attempt(Double x, Double y, Double r, String time, String workTime, boolean isHit) {
+    public Attempt(Double x, BigDecimal y, BigDecimal r, String time, String workTime, String isHit) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -23,15 +24,15 @@ public class Attempt {
         return x;
     }
 
-    public Double getY() {
+    public BigDecimal getY() {
         return y;
     }
 
-    public Double getR() {
+    public BigDecimal getR() {
         return r;
     }
 
-    public Boolean getIsHit() {
+    public String getIsHit() {
         return isHit;
     }
 

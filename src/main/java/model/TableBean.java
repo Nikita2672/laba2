@@ -1,13 +1,16 @@
 package model;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class TableBean {
+public class TableBean implements Serializable {
+
     private final List<Attempt> attempts = new ArrayList<>();
 
-    public void addAttempt(double x, double y, double r, String time, String workTime, boolean isHit ) {
+    public void addAttempt(double x, BigDecimal y, BigDecimal r, String time, String workTime, String isHit ) {
         attempts.add(new Attempt(x, y, r, time, workTime, isHit));
     }
 
@@ -26,5 +29,12 @@ public class TableBean {
     @Override
     public int hashCode() {
         return Objects.hash(attempts);
+    }
+
+    @Override
+    public String toString() {
+        return "TableBean{"
+                + "attempts=" + attempts
+                + '}';
     }
 }
